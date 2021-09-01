@@ -37,6 +37,7 @@ const SideMenu=()=>{
       SetOpen(!open)
     localStorage.setItem('nav',!open)
 }}>
+
     <FontAwesomeIcon icon={faBars} className='nav_icon_name'/>
   </div>
   <ul className="nav_list">

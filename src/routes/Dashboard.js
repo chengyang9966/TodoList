@@ -1,6 +1,7 @@
 import Navbar from '../components/navbar';
 import Card from '../components/CardComponent';
-import MasterPage from '../components/MaterLayout'
+import MasterPage from '../components/MaterLayout';
+// import Loading from '../components/Loading';
 const DashBoard=()=>{
     return(
     <MasterPage>
@@ -12,6 +13,7 @@ const DashBoard=()=>{
       <body >
       <Card/>
       </body>
+      {/* <Loading/> */}
     </MasterPage>
     )
 }

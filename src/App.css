@@ -188,6 +188,9 @@ div.vertical-line{
   position: relative;
   -webkit-text-stroke: 1px var(--gray200);
 }
+/* .nav_icon{
+  display: flex;
+} */
 .nav_icon::after {
   content: "";
   padding-top: 0.5rem;
@@ -397,6 +400,39 @@ color: #000;
   width: 100%;
   font-size: var(--font-size-input);
 }
+/* Loading */
+.loader {
+  border: 16px solid var( --gray900); /* Light grey */
+  border-top: 16px solid var(--side-menu-container); /* Blue */
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+  animation: spin 1.5s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loaderDOM {
+  position: absolute;
+  top: calc(50% - 4em);
+  left: calc(50% - 4em);
+  width: 6em;
+  height: 6em;
+  border: 1.1em solid rgba(0, 0, 0, 0.2);
+  border-left: 1.1em solid #082032;
+  border-radius: 50%;
+  animation: spin 1.1s infinite linear;
+  transition: opacity 0.3s;
+}
+
+.loaderDOM--hide {
+  opacity: 0;
+}
+
+
+
 /* Mobile */
 @media screen and (max-width: 769px){
   .navbar-container{
