@@ -1,4 +1,4 @@
-:root{
+/* :root{
   --main-bg-color:#596072;
   --bg-color:#282c34;
   --font-size: calc(10px + 2vmin);
@@ -14,10 +14,54 @@
   --gray700: hsl(237, 14%, 72%);
   --gray800: hsl(240, 15%, 86%);
   --gray900: #f0f0f5;
+  --text-color: rgb(255, 255, 255);
+} */
+.dark-theme{
+  --main-bg-color:#596072;
+  --bg-color:#282c34;
+  --font-size: calc(10px + 2vmin);
+  --font-size-input: calc(10px + 1vmin);
+  --desc-size:14px;
+  --bg-Yellow:#fdc836;
+  --bg-Yellow-ok:#ffbc04;
+  --side-menu-container:#082032;
+  --gray200: #26273b;
+  --gray400: #454560;
+  --gray600: #6f708b;
+  --gray600-accent: #6f70b8;
+  --gray700: hsl(237, 14%, 72%);
+  --gray800: hsl(240, 15%, 86%);
+  --gray900: #f0f0f5; 
+  --text-color: rgb(255, 255, 255);
+  --side-menu-item:#7b7b7b;
+}
+.light-theme{
+  --main-bg-color:#596072;
+  --bg-color:#ffffff;
+  --font-size: calc(10px + 2vmin);
+  --font-size-input: calc(10px + 1vmin);
+  --desc-size:14px;
+  --bg-Yellow:#fdc836;
+  --bg-Yellow-ok:#ffbc04;
+  --side-menu-container:#001f35;
+  --gray200: #26273b;
+  --gray400: #454560;
+  --gray600: #6f708b;
+  --gray600-accent: #6f70b8;
+  --gray700: hsl(237, 14%, 72%);
+  --gray800: hsl(240, 15%, 86%);
+  --gray900: #f0f0f5; 
+  --text-color: rgb(0, 0, 0);
+  --side-menu-item:rgb(255, 255, 255);
 }
 
+
 .MasterPageContainer{
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: var(--font-size);
   display: flex;
+  user-select:none;
 }
 
 .App {
@@ -37,15 +81,9 @@
 .App-header {
   background-color: var(--bg-color);
   font-size: var(--font-size);
-  color: white;
+  color: var(--text-color);
   padding-top: 1rem;
 }
-body{
-  color: rgb(255, 255, 255);
-  background-color:var(--bg-color);
-  font-size: var(--font-size);
-}
-
 .App-link {
   color: #61dafb;
 }
@@ -68,6 +106,7 @@ body{
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  cursor: pointer;
 }
 /* Card */
 .CardOuterContainer{
@@ -123,7 +162,7 @@ div.vertical-line{
 
 .navigation {
   background-color: var(--side-menu-container);
-  color: white;
+  color:  var(--side-menu-item);
   transition: flex 300ms ease;
   position: relative;
 }
@@ -162,8 +201,9 @@ div.vertical-line{
 .nav_list {
   margin-top: 1rem;
   list-style: none;
-  min-height: 100vh;
+  min-height: 90vh;
   padding-left: 30px;
+  position: relative;
 }
 
 .list-item {
@@ -171,12 +211,30 @@ div.vertical-line{
   transition: background 270ms ease;
   position: relative;
 }
+.list-item-color{
+  position: absolute;
+  bottom: 0px;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+}
+.navigation.navigation_close .list-item-color{
+  left: 6px;
+}
 
 .list-item:hover,
 .list-item:focus {
   background: hsl(240, 15%, 90%)
     linear-gradient(to right, var(--gray600-accent) 3px, 3px, #0000);
 }
+
+.list-item-color:hover *,
+.list-item-color:focus  *{
+  color: var(--bg-Yellow-ok);
+}
+
 .list-item:hover a,
 .list-item:focus a{
 color: #000;
@@ -194,7 +252,7 @@ color: #000;
   gap: 1.8rem;
   font-size: 1.5rem;
   text-transform: capitalize;
-  color: white;
+  color: var(--side-menu-item);
   text-decoration: none;
   align-items: center;
   display: flex;
@@ -352,6 +410,11 @@ color: #000;
   .avatar{
     margin-left: 0rem;
     margin-right: 2rem;
+
+  }
+
+  .popUpHeader h3{
+
   }
   .CardContainer{
     width: 100%;

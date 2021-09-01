@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars,faWindowRestore,faTasks } from '@fortawesome/free-solid-svg-icons'
 import React,{useState,useEffect} from 'react'
 import { useLocation } from "react-router-dom";
-import { IsMobile } from '../utils/Mobile';
+import {ToggleTheme} from '../Context';
 const SideMenu=()=>{
     let location = useLocation();
     const [open,SetOpen]=useState(false);
@@ -24,6 +24,11 @@ const SideMenu=()=>{
             path:'/myTasks',
             icon: <FontAwesomeIcon width='30' height='30' icon={faTasks}/>
         },
+        {
+            name:'Theme ',
+            path:null,
+            icon: null
+        }
     ]
     return(
     <nav className={open?"navigation":'navigation navigation_close'}>
@@ -36,7 +41,12 @@ const SideMenu=()=>{
   </div>
   <ul className="nav_list">
         {
-            Route.map(w=>{
+            Route.map((w,i)=>{
+                if(i===Route.length-1){
+                   return(
+                    <ToggleTheme/>
+                   ) 
+                }
                 return(
                     <li className={location.pathname===w.path?'active list-item':"list-item"} data-tooltip={w.name}>
                     <a href={w.path}>

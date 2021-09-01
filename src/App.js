@@ -1,8 +1,13 @@
 import './App.css';
-import Routes from './routes'
+import Routes from './routes';
+import ThemeWrapper from './Context';
 function App() {
   return (
-    <Routes/>
+    <div id="app" className="light-theme">
+    <ThemeWrapper >
+      <Routes/>
+    </ThemeWrapper>
+    </div>
   );
 }
 

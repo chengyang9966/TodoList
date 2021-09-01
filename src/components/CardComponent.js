@@ -3,8 +3,8 @@ import React,{useEffect,useState} from 'react'
 const Card=()=>{
     let data=JSON.parse(localStorage.getItem('tasksList'))
     const DefaultValue=[
-        { name: "Completed", value: 10 }, 
-        { name: "Total", value: 16},
+        { name: "Completed", value: 0 }, 
+        { name: "Total", value: 0},
     ]
     const [tasks,setTasks]=useState({
         totalTasks:0,
@@ -25,9 +25,9 @@ const Card=()=>{
             complete
         })
     }
+// eslint-disable-next-line 
 },[])
 
-console.log('DataPieChartLists: ', DataPieChartLists);
 
     return(
         <div className='CardOuterContainer'>

@@ -2,15 +2,10 @@ import React from "react";
 import { PieChart, Pie, Label, Cell } from "recharts";
 import { IsMobile } from "../utils/Mobile";
 const PieChart2=({data})=>{
-    let NEWDATA= [
-        { name: "On Progress", value: 16},
-        { name: "Completed", value: 10 },
-    ]
     let Percent=data[0].value===0?100:(data[1].value*100/data[0].value).toFixed(0 )
     const COLORS=[ "white" , "var(--bg-Yellow)"]
     console.log('Percent: ', Percent);
     return (
-        // <ResponsiveContainer minHeight='100px' minWidth='100px' width="100%" height="80%">
         <PieChart width={200} height={280} >
           <Pie
           isAnimationActive={false}
@@ -33,7 +28,6 @@ const PieChart2=({data})=>{
               </Label>
           </Pie>
         </PieChart>
-        // </ResponsiveContainer>
       );
 }
 
