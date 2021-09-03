@@ -1,22 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './Style/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-const loader = document.querySelector('.loaderDOM');
-const showLoader = () => loader.classList.remove('loaderDOM--hide');
 
-const hideLoader = () => loader.classList.add('loaderDOM--hide');
-setTimeout(() => 
 ReactDOM.render(
   <React.StrictMode>
-    <App 
-     hideLoader={hideLoader}
-     showLoader={showLoader} 
-    />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
-), 1000);
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

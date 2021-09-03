@@ -27,7 +27,7 @@ const ListCard = ({ title, data, index, complete, completed,deleteTask,editTasks
         {completed ? (
           <hr className="line-through" />
         ) : (
-          <div onClick={() => SetOpen(!open)} className="dots" />
+          data&& <div onClick={() => SetOpen(!open)} className="dots" />
         )}
         {open && (
           <div
@@ -51,6 +51,7 @@ const ListCard = ({ title, data, index, complete, completed,deleteTask,editTasks
                         name: title,
                         acton:w.name
                       });
+                      SetOpen(false)
                       // return
                     } else {
                       SetPopUpData({

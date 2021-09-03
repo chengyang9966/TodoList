@@ -39,7 +39,7 @@ export function ToggleTheme() {
   
     return (
       <div className={"list-item-color"}> 
-       <FontAwesomeIcon width='30' height='30' onClick={()=>toggle()} icon={faPalette}/>
+       <FontAwesomeIcon width='30' height='30' onClick={toggle} icon={faPalette}/>
       </div>
     )
   }

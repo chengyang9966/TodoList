@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars,faWindowRestore,faTasks } from '@fortawesome/free-solid-svg-icons'
+import { faBars,faWindowRestore,faTasks,faClipboardList, faTimes } from '@fortawesome/free-solid-svg-icons'
 import React,{useState,useEffect} from 'react'
-import { useLocation } from "react-router-dom";
+import { useLocation,useHistory } from "react-router-dom";
 import {ToggleTheme} from '../Context';
 const SideMenu=()=>{
     let location = useLocation();
+    let history = useHistory();
     const [open,SetOpen]=useState(false);
     useEffect(()=>{
         let navState=localStorage.getItem('nav')
@@ -23,6 +24,11 @@ const SideMenu=()=>{
             name:'Tasks',
             path:'/myTasks',
             icon: <FontAwesomeIcon width='30' height='30' icon={faTasks}/>
+        },
+        {
+            name:'completed Tasks',
+            path:'/completeTasks',
+            icon: <FontAwesomeIcon width='30' height='30' icon={faClipboardList}/>
         },
         {
             name:'Theme ',
@@ -49,7 +55,7 @@ const SideMenu=()=>{
                    ) 
                 }
                 return(
-                    <li className={location.pathname===w.path?'active list-item':"list-item"} data-tooltip={w.name}>
+                    <li onClick={()=>history.push(w.path)} className={location.pathname===w.path?'active list-item':"list-item"} data-tooltip={w.name}>
                     <a href={w.path}>
                     {w.icon}
                       <span className="text">{w.name}</span>
@@ -66,14 +72,15 @@ const SideMenu=()=>{
 const Moblie=()=>{
     const [open,SetOpen]=useState(false);
     return(
-        <nav className='navigation_mobile navigation_close'>
-  <div  onClick={()=>{   
+        <div className='navigation_mobile navigation_close'>
+
+   <FontAwesomeIcon onClick={()=>{   
       SetOpen(!open)
     localStorage.setItem('mobileNav',!open)
-}}>
-    <FontAwesomeIcon icon={faBars} className='nav_icon_name'/>
-  </div>
-        </nav>
+}} icon={open?faBars:faTimes} className={!open?'flip-diagonal-2-tl nav_icon_name':'nav_icon_name '}/>
+
+  
+        </div>
     )
 }
 

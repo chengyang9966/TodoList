@@ -24,6 +24,7 @@ const Tasks = () => {
     name: "Add Task",
     desc: "",
   }
+
   const [NewArry, SetNewArray] = useState([]);
   const [error, SetError] = useState(false);
   const [popUpData=InitialState, SetpopUpData] = useState();
@@ -68,9 +69,9 @@ const Tasks = () => {
   return (
     <MasterPage>
       <div className="AddTaskContainer">
-        <h3>Upcoming Tasks</h3>
+        <h3>Tasks</h3>
         <div style={{ width: "100%" }}>
-          {NewArry.sort((x) => x.complete).map((w, i) => {
+          {NewArry.filter((x) =>!x.complete).map((w, i) => {
             return (
               <ListCard
                 title={w.title}
