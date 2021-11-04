@@ -4,6 +4,7 @@ import PopUp from "../components/PopUp";
 import React, { useState, useEffect } from "react";
 import InputComponent from "../components/InputComponent";
 import errorChecking from "../utils/errorChecking";
+import Loading from "../components/Loading";
 const Tasks = () => {
   let temp = [
     {
@@ -27,15 +28,18 @@ const Tasks = () => {
 
   const [NewArry, SetNewArray] = useState([]);
   const [error, SetError] = useState(false);
+  const [load, SetLoad] = useState(false);
   const [popUpData=InitialState, SetpopUpData] = useState();
 
   useEffect(()=>{
     setInterval(()=>SetError(false),5000)
   },[error])
   useEffect(()=>{
+    SetLoad(true)
    let temp= JSON.parse(localStorage.getItem('tasksList'))
    if(temp){
     SetNewArray(temp)
+    SetLoad(false)
    }
   },[])
 
@@ -67,11 +71,13 @@ const Tasks = () => {
     UpdateArray(DuplicateNewArray);
   };
   return (
+    load?<Loading/>
+    :
     <MasterPage>
       <div className="AddTaskContainer">
         <h3>Tasks</h3>
         <div style={{ width: "100%" }}>
-          {NewArry.filter((x) =>!x.complete).map((w, i) => {
+          {NewArry.sort((x,b) =>x.complete-b.complete).map((w, i) => {
             return (
               <ListCard
                 title={w.title}

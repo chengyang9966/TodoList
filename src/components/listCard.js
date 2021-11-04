@@ -53,7 +53,10 @@ const ListCard = ({ title, data, index, complete, completed,deleteTask,editTasks
                       });
                       SetOpen(false)
                       // return
-                    } else {
+                    }else if(w.name=='complete'){
+                      complete()
+                      SetOpen(false)
+                    }else {
                       SetPopUpData({
                         open: true,
                         name: title,

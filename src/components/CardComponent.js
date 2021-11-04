@@ -47,7 +47,7 @@ const Card = () => {
           </div>
           <div className="textContainer">
             <h4> Task Completed</h4>
-            <p>
+            <p style={{fontWeight:'bold'}}>
               {tasks.complete} / {tasks.totalTasks} completed
             </p>
           </div>

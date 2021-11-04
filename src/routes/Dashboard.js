@@ -21,7 +21,7 @@ const DashBoard=()=>{
         <Navbar  name='Cheng Yang' />
         </div>
       <Card/>
-      <div className='AddCategoryContainer'>
+      {/* <div className='AddCategoryContainer'>
         <h3 >Categories</h3>
         <div className="addBtnContainer">
         <AddBtn/>
@@ -34,7 +34,7 @@ const DashBoard=()=>{
 <Category color={w.color} name={w.name} completedTask={w.completedTask} TotalTasks={w.totalTasks}/>
         )
         }
-      </div>
+      </div> */}
       {/* <Loading/> */}
     </MasterPage>
     )
