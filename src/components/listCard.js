@@ -58,7 +58,7 @@ const ListCard = ({ title, data, index, complete, completed,deleteTask,activeTas
                       });
                       SetOpen(false)
                       // return
-                    }else if(w.name=='complete'){
+                    }else if(w.name==='complete'){
                       complete()
                       SetOpen(false)
                     }else {

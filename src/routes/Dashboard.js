@@ -1,18 +1,18 @@
 import Navbar from '../components/navbar';
 import Card from '../components/CardComponent';
 import MasterPage from '../components/MaterLayout';
-import Category from '../components/Category';
-import AddBtn from '../components/AddBtn';
+// import Category from '../components/Category';
+// import AddBtn from '../components/AddBtn';
 // import Loading from '../components/Loading';
 const DashBoard=()=>{
-  const CategoryList=[
-    {
-      name:'Test',
-      color:'red',
-      completedTask:2,
-      totalTasks:3
-    }
-  ]
+  // const CategoryList=[
+  //   {
+  //     name:'Test',
+  //     color:'red',
+  //     completedTask:2,
+  //     totalTasks:3
+  //   }
+  // ]
     return(
     <MasterPage>
 

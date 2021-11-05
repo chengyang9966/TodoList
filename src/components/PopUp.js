@@ -15,6 +15,7 @@ const PopUp=({title,description,disableOkBtn,CloseBtn,okBtn})=>{
           }
           window.addEventListener('keydown', handleKeyPress)
         return () => window.removeEventListener('keydown', handleKeyPress)
+        // eslint-disable-next-line
       }, [])
 
 
