@@ -2,15 +2,15 @@ import ConvertText from "../utils/CapitalText";
 import React, { useState, useEffect } from "react";
 import PopUp from "./PopUp";
 import InputComponent from "./InputComponent";
-const ListCard = ({ title, data, index, complete, completed,deleteTask,editTasks }) => {
-  console.log("completed: ", completed);
+const ListCard = ({ title, data, index, complete, completed,deleteTask,activeTask,editTasks }) => {
+  console.log("completed: ", title,completed);
   const [open, SetOpen] = useState(false);
   const [error, SetError] = useState(false);
   const [popUpData, SetPopUpData] = useState({
     open: false,
     name: "",
     desc: "",
-    acton:"",
+    action:"",
   });
   const [editData, SetEditData] = useState({
     open: false,
@@ -22,7 +22,12 @@ const ListCard = ({ title, data, index, complete, completed,deleteTask,editTasks
   }, [error]);
   return (
     <>
-      <div className="listCardContainer">
+      <div className="listCardContainer" onClick={()=>completed&& SetPopUpData({
+                        open: true,
+                        name: title,
+                        desc:`Do you want to active this ${title} ?`,
+                        action:'active'
+                      })} >
         <h4>{title}</h4>
         {completed ? (
           <hr className="line-through" />
@@ -44,12 +49,12 @@ const ListCard = ({ title, data, index, complete, completed,deleteTask,editTasks
                       SetEditData({
                         open: true,
                         name: title,
-                        acton:w.name
+                        action:w.name
                       });
                       SetPopUpData({
                         ...popUpData,
                         name: title,
-                        acton:w.name
+                        action:w.name
                       });
                       SetOpen(false)
                       // return
@@ -61,7 +66,7 @@ const ListCard = ({ title, data, index, complete, completed,deleteTask,editTasks
                         open: true,
                         name: title,
                         desc: `Do you want to ${w.name} this ${title} ?`,
-                        acton:w.name
+                        action:w.name
                       });
                       SetOpen(false);
                     }
@@ -85,7 +90,9 @@ const ListCard = ({ title, data, index, complete, completed,deleteTask,editTasks
             });
           }}
           okBtn={() => {
-            popUpData.acton==='delete'?deleteTask() :complete();
+            popUpData.action==='delete'?deleteTask() :
+            popUpData.action==='active'?activeTask():
+            complete();
             SetPopUpData({
               open: false,
             });

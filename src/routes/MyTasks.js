@@ -61,6 +61,12 @@ const Tasks = () => {
     );
     UpdateArray(DuplicateNewArray);
   };
+  const activeTasks = (index) => {
+    let DuplicateNewArray = NewArry.map((w, i) =>
+      i === index ? { ...w, complete: false } : w
+    );
+    UpdateArray(DuplicateNewArray);
+  };
   const deleteTask = (index) => {
     let DuplicateNewArray = NewArry.filter((w,i)=>i!==index)
     UpdateArray(DuplicateNewArray);
@@ -84,6 +90,7 @@ const Tasks = () => {
                 data={temp}
                 completed={w.complete}
                 complete={() => setCompleteTask(i)}
+                activeTask={() => activeTasks(i)}
                 deleteTask={() => deleteTask(i)}
                 editTasks={(text) => editTasks(text,i)}
                 index={i}
