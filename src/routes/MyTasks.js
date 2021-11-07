@@ -34,14 +34,44 @@ const Tasks = () => {
   useEffect(()=>{
     setInterval(()=>SetError(false),5000)
   },[error])
-  useEffect(()=>{
+
+  useEffect(() => {
+    const  handleKeyPress = (event) => {
+        if(event.key === 'Enter'){
+          if(popUpData.open){
+            if(errorChecking(popUpData.desc)){
+              SetError(true)
+             return 
+          }else{
+            addTasks(popUpData.desc)
+            SetpopUpData(InitialState);
+          }  
+          }else{
+            SetpopUpData((prevValue)=>({...prevValue,open:true}));
+          }
+
+
+        }
+        if(event.key === 'Escape'){
+          SetpopUpData(InitialState);
+        }
+
+      }
+      window.addEventListener('keydown', handleKeyPress)
+    return () => window.removeEventListener('keydown', handleKeyPress)
+
+  })
+
+
+  useEffect(() => {
     SetLoad(true)
    let temp= JSON.parse(localStorage.getItem('tasksList'))
    if(temp){
     SetNewArray(temp)
     SetLoad(false)
    }
-  },[])
+    // eslint-disable-next-line
+  }, [])
 
   const UpdateArray=(DuplicateNewArray)=>{
     localStorage.setItem('tasksList',JSON.stringify(DuplicateNewArray))
@@ -129,12 +159,14 @@ const Tasks = () => {
           }
           disableOkBtn={error}
           okBtn={()=>{
+            console.log('popUpData: ', popUpData);
             if(errorChecking(popUpData.desc)){
                 SetError(true)
                return 
+            }else{
+              addTasks(popUpData.desc)
+              SetpopUpData(InitialState);
             }  
-            addTasks(popUpData.desc)
-            SetpopUpData(InitialState);
         }
             
         }

@@ -1,24 +1,7 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect } from "react";
 
 const PopUp=({title,description,disableOkBtn,CloseBtn,okBtn})=>{
-      useEffect(() => {
-        const  handleKeyPress = (event) => {
-            if(event.key === 'Enter'){
-                okBtn()
-            }
-            if(event.key === 'Escape'){
-                CloseBtn()
-            }
-    
-          }
-          window.addEventListener('keydown', handleKeyPress)
-        return () => window.removeEventListener('keydown', handleKeyPress)
-        // eslint-disable-next-line
-      }, [])
-
-
 
     return(
         <div  tabIndex='1' className="wrapperContainer">

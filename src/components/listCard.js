@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import PopUp from "./PopUp";
 import InputComponent from "./InputComponent";
 const ListCard = ({ title, data, index, complete, completed,deleteTask,activeTask,editTasks }) => {
-  console.log("completed: ", title,completed);
   const [open, SetOpen] = useState(false);
   const [error, SetError] = useState(false);
   const [popUpData, SetPopUpData] = useState({
