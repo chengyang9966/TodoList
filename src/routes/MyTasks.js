@@ -112,7 +112,7 @@ const Tasks = () => {
     <MasterPage>
       <div className="AddTaskContainer">
         <h3>Tasks</h3>
-        <div style={{ width: "100%" }}>
+        <div style={{ width: "100%"}}>
           {NewArry.sort((x,b) =>x.complete-b.complete).map((w, i) => {
             return (
               <ListCard

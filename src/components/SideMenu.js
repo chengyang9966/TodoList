@@ -3,7 +3,7 @@ import { faBars,faWindowRestore,faTasks,faClipboardList, faTimes } from '@fortaw
 import React,{useState,useEffect} from 'react'
 import { useLocation,useHistory } from "react-router-dom";
 import {ToggleTheme} from '../Context';
-const SideMenu=()=>{
+const SideMenu=({setWidthForMainContainer=()=>{}})=>{
     let location = useLocation();
     let history = useHistory();
     const [open,SetOpen]=useState(false);
@@ -11,8 +11,11 @@ const SideMenu=()=>{
         let navState=localStorage.getItem('nav')
         if(navState){
             SetOpen(navState)
+            setWidthForMainContainer(navState)
         }
-        SetOpen(false)
+            SetOpen(false)
+            setWidthForMainContainer(false)
+        
     },[])
     const Route=[
         {
@@ -41,6 +44,7 @@ const SideMenu=()=>{
   <div className="nav_icon" onClick={()=>{
       
       SetOpen(!open)
+      setWidthForMainContainer(!open)
     localStorage.setItem('nav',!open)
 }}>
 
@@ -69,13 +73,14 @@ const SideMenu=()=>{
     )
 }
 
-const Moblie=()=>{
+const Moblie=({setWidthForMainContainer=()=>{}})=>{
     const [open,SetOpen]=useState(false);
     return(
         <div className='navigation_mobile navigation_close'>
 
    <FontAwesomeIcon onClick={()=>{   
       SetOpen(!open)
+      setWidthForMainContainer(!open)
     localStorage.setItem('mobileNav',!open)
 }} icon={open?faBars:faTimes} className={!open?'flip-diagonal-2-tl nav_icon_name':'nav_icon_name '}/>
 
